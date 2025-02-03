@@ -3,7 +3,7 @@ name = "chameleon"
 version = "0.1"
 description = "A Python package to find sentences matching a given sentiment."
 authors = [{ name = "Giskard AI", email = "hello@giskard.ai" }]
-dependencies = ["transformers>=4.35.2", "torch>=2.1.1"]
+dependencies = ["transformers>=4.35.2", "torch>=2.1.1", "textattack", "Levenshtein"]
 requires-python = ">=3.11,<3.12"
 readme = "README.md"
 license = { text = "" }

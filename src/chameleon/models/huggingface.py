@@ -1,4 +1,5 @@
 from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from .base import BaseModel
 
@@ -16,8 +17,10 @@ class HuggingFaceModel(BaseModel):
             "distilbert-base-uncased-finetuned-sst-2-english".
             Must be a text classification model.
         """
-        self._model = model
-        self._pipe = pipeline("text-classification", model=self._model, top_k=None)
+        self._model_name = model
+        self._pipe = pipeline("text-classification", model=self._model_name, top_k=None)
+        self._tokenizer = AutoTokenizer.from_pretrained(self._model_name)
+        self._model = AutoModelForSequenceClassification.from_pretrained(self._model_name)
 
     def predict(self, sentence):
         return {el["label"]: el["score"] for el in self._pipe(sentence)[0]}
