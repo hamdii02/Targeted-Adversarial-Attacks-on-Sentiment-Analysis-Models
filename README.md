@@ -39,7 +39,7 @@ sentence.
 | My grandmother's secret sauce is the best ever made! | 0.9619 | 0.0256 | 0.0123 |
 | I feel it should be a positive thing for us to look | 0.9615 | 0.0262 | 0.0121 |
 | I have this excellent secret love. Her sauce is the best? | 0.9624 | 0.0259 | 0.0117 |
-| Good science is great as a finding of my good brain salsa? | 0.9616 | 0.0264 | 0.0120 |
+| good science is great as a finding of my good brain salsa? | 0.9616 | 0.0264 | 0.0120 |
 
 
 # Installation
