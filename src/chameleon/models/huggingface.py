@@ -18,7 +18,7 @@ class HuggingFaceModel(BaseModel):
             Must be a text classification model.
         """
         self._model_name = model
-        self._pipe = pipeline("text-classification", model=self._model_name, top_k=None)
+        self._pipe = pipeline("text-classification", model=self._model_name, top_k=None, device=-1) # , device=-1 to use cpu as I don't have gpu
         self._tokenizer = AutoTokenizer.from_pretrained(self._model_name)
         self._model = AutoModelForSequenceClassification.from_pretrained(self._model_name)
 

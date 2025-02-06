@@ -1,5 +1,5 @@
 from pytest import approx
-from chameleon.models import HuggingFaceModel, BaseModel
+from ..src.chameleon.models import HuggingFaceModel, BaseModel
 
 
 def test_can_load_huggingface_model():

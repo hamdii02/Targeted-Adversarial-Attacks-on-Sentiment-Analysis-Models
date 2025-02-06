@@ -23,6 +23,24 @@ class RoundedScoreGoal_prob(GoalFunction):
     def _is_goal_complete(self, model_output, attacked_text):
         """Check if the generated text meets the target probabilities."""
         scores = model_output.numpy().flatten()
+        print(f"obtained Scores: {scores} | targer Scores {self.target_scores}")
+
+        found_valid_example = False
+
+        # Loop through each decimal level from 1 to n_decimal
+        for decimals in range(1, self.n_decimal + 1):
+            rounded_scores = np.round(scores, decimals=decimals)
+            target_scores = np.round(np.array(self.target_scores), decimals=decimals)
+            is_close = np.allclose(rounded_scores, target_scores)
+
+            if is_close:
+                print(f"Match found at {decimals} decimal places:")
+                print(f"Sentence: '{attacked_text.text}'")
+                print(f"Rounded Scores: {rounded_scores}")
+                found_valid_example = True
+
+        if not found_valid_example:
+            print("No match found for any decimal precision up to n_decimal.")
         rounded_scores_final = np.round(scores, decimals=self.n_decimal)
         return np.allclose(rounded_scores_final, self.target_scores)
 

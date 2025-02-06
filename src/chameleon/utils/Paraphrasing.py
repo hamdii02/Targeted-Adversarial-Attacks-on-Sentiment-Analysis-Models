@@ -14,7 +14,7 @@ def generate_best_paraphrase(input_sentence: str,
                              temperature: float = 1.5,
                              top_k: int = 50,
                              top_p: float = 0.95,
-                             cosine_similarity_threshold: float = 0.8,
+                             cosine_similarity_threshold: float = 0.4, # should be changed
                              threshold_attempts = 300) -> str:
     """
     Generates diverse paraphrases for a given input sentence and returns the best one
@@ -40,7 +40,8 @@ def generate_best_paraphrase(input_sentence: str,
     bart_model = BartForConditionalGeneration.from_pretrained('eugenesiow/bart-paraphrase')
     bart_tokenizer = BartTokenizer.from_pretrained('eugenesiow/bart-paraphrase')
     # Define device (GPU if available, otherwise CPU)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = "cpu"
     bart_model = bart_model.to(device)
 
     # Load DistilBERT model for embeddings

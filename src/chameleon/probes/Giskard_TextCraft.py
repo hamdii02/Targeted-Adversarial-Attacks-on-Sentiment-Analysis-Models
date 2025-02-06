@@ -11,8 +11,8 @@ from textattack.search_methods import ParticleSwarmOptimization
 from ..utils.goal_functions import RoundedScoreGoal_prob
 from ..utils.constraints import Levenshtein_length_Constraint
 from ..utils.Paraphrasing import generate_best_paraphrase
-from ..models.base import BaseModel,HuggingFaceModel
-from probes.base import base
+from ..models import BaseModel,HuggingFaceModel
+from ..probes.base import BaseProbe
 from ..utils.attack_utils import compute_target_scores_and_label
 from dataclasses import dataclass
 from typing import Dict
@@ -26,7 +26,7 @@ class TextAttackProbeResult:
     scores: Dict[str, float]
     elapsed_time: float
 
-class TextAttackProbe(base):
+class TextAttackProbe(BaseProbe):
     """A probe that uses TextAttack to generate adversarial examples."""
 
     def __init__(self, model: HuggingFaceModel, target_sentence: str, min_levenshtein: int = 30, min_length: int = 40, max_length: int = 60):
@@ -45,7 +45,7 @@ class TextAttackProbe(base):
         # transformations that will be applied on the given sentence
         transformation = CompositeTransformation([
             WordSwapEmbedding(max_candidates=30),
-            WordSwapMaskedLM(method="bae", max_candidates=40),
+            # WordSwapMaskedLM(method="bae", max_candidates=40), # it shoudl be used if we want a sentence with meaning
             WordSwapRandomCharacterDeletion()
         ])
 
@@ -78,7 +78,7 @@ class TextAttackProbe(base):
 
         # Run attack
         start_time = time.time()
-        result = text_manipulator.attack(generated_sentence, label)       
+        result = text_manipulator.attack(generated_sentence, 1)       
         elapsed_time = time.time() - start_time
 
 
