@@ -44,33 +44,35 @@ sentence.
 Example Output
 
 
-Found sentence: My grandmother's secret sauce is the best ever created!
+Found sentence: I have this excellent secret love. Her sauce is the best?
 Scores: {'positive': 0.95, 'neutral': 0.03, 'negative': 0.02}
 Elapsed time: 12.34
 
 Project Structure
 
-src/
-│── chameleon/
-│   ├── models/            # Handles model loading and processing
-│   │   ├── __init__.py
-│   │   ├── base.py        # Base class for models
-│   │   ├── huggingface.py # Specific implementation for Hugging Face models
-│   │
-│   ├── probes/            # Contains probe implementations
-│   │   ├── __init__.py
-│   │   ├── score_matching_probe.py # Generates a sentence with the same classification score as a target sentence
-│   │
-│   ├── tests/             # Unit tests
-│   │   ├── __init__.py
-│   │   ├── test_huggingface_model.py  # Tests for the Hugging Face model
-│
-│── utils/                 # Utility functions and classes
-│   ├── constraints.py     # Custom constraints for TextAttack
-│   ├── goal_functions.py  # Custom goal functions for TextAttack
-│   ├── attack_utils.py    # Helper functions for attacks
-│   ├── paraphraser.py     # Paraphrases a sentence under constraints
-│
-│── .gitignore             # Files to ignore in version control
-│── README.md              # Main project documentation
+```
+src/  
+│── chameleon/  
+│   ├── models/              # Handles model loading and processing  
+│   │   ├── __init__.py  
+│   │   ├── base.py          # Base class for models  
+│   │   ├── huggingface.py   # Hugging Face model implementation  
+│   │  
+│   ├── probes/              # Probe implementations  
+│   │   ├── __init__.py  
+│   │   ├── score_matching_probe.py   # Generates sentences with similar classification scores  
+│   │  
+│   ├── tests/               # Unit tests  
+│   │   ├── __init__.py  
+│   │   ├── test_huggingface_model.py  # Tests for Hugging Face model  
+│  
+│── utils/                   # Utility functions and classes  
+│   ├── constraints.py        # Custom constraints for TextAttack  
+│   ├── goal_functions.py     # Custom goal functions for TextAttack  
+│   ├── attack_utils.py       # Helper functions for attacks  
+│   ├── paraphraser.py        # Paraphrases sentences under constraints  
+│  
+│── .gitignore                # Files to ignore in version control  
+│── README.md                 # Main project documentation  
 
+```
