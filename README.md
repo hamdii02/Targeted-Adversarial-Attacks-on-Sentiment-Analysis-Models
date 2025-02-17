@@ -1,17 +1,9 @@
-# Chameleon: Text Classification Model Analysis
+# Targeted Adversarial Attacks on Sentiment Analysis Models
 
-This is a Python framework designed to analyze text classification models by finding sentences with similar sentiment scores to a given target sentence. It supports HuggingFace text classification models and provides tools for probing and generating adversarial examples.
+This is a Python framework designed to attack text classification models by finding sentences with similar sentiment scores to a given target sentence. It supports HuggingFace text classification models and provides tools for probing and generating adversarial examples.
 
-Features
-    Model Support: Works with HuggingFace text classification models.
-    Probes: Includes probes to analyze models and find sentences with similar sentiment scores.
+This library designed to analyze and perturb text classification models, specifically focusing on generating adversarial examples that retain similar sentiment scores to the original sentence. By using techniques such as **paraphrasing**, **word swapping**, and **Particle Swarm Optimization (PSO)**, it creates modified sentences that challenge the model while preserving the intended classification probabilities. This is done in a black-box setting where only the output of the model is accesible.
 
-    Modular Design: Clean and modular structure for easy extension.
-
-# Available Probes:  TextCraft
-
-
-**TextCraft** is a Python library designed to analyze and perturb text classification models, specifically focusing on generating adversarial examples that retain similar sentiment scores to the original sentence. By using state-of-the-art techniques such as **paraphrasing**, **word swapping**, and **Particle Swarm Optimization (PSO)**, it creates modified sentences that challenge the model while preserving the intended classification probabilities. This is done in a black-box setting where only the output of the model is available.
 
 ## Features
 
