@@ -1,4 +1,4 @@
-name: Giskard_test
+name: test
 channels:
   - anaconda
   - conda-forge

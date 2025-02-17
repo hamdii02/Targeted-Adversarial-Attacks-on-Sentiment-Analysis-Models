@@ -9,15 +9,15 @@
 echo "Starting the process..."
 
 # Check if the Conda environment exists, if not, create it from the .yml file
-if ! conda env list | grep -q "Giskard_test"; then
+if ! conda env list | grep -q "test"; then
     echo "Creating Conda environment from environment.yml file..."
-    conda env create -f environment_Giskard.yml
+    conda env create -f environment.yml
 else
     echo "Conda environment already exists."
 fi
 
 # Activate your Conda environment
-conda activate Giskard_test
+conda activate test
 
 # Execute the Python test script
 python -m tests.test_script
