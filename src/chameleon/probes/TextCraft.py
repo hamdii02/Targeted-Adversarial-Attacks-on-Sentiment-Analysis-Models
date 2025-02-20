@@ -12,7 +12,7 @@ from ..utils.goal_functions import RoundedScoreGoal_prob
 from ..utils.constraints import Levenshtein_length_Constraint
 from ..utils.Paraphrasing import generate_best_paraphrase
 from ..models import BaseModel,HuggingFaceModel
-from ..probes.base import BaseProbe
+from .base import BaseProbe
 from ..utils.attack_utils import compute_target_scores_and_label
 from dataclasses import dataclass
 from typing import Dict

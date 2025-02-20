@@ -2,7 +2,7 @@
 
 This is a Python framework designed to attack text classification models by finding sentences with similar sentiment scores to a given target sentence. It supports HuggingFace text classification models and provides tools for probing and generating adversarial examples.
 
-This library designed to analyze and perturb text classification models, specifically focusing on generating adversarial examples that retain similar sentiment scores to the original sentence. By using techniques such as **paraphrasing**, **word swapping**, and **Particle Swarm Optimization (PSO)**, it creates modified sentences that challenge the model while preserving the intended classification probabilities. This is done in a black-box setting where only the output of the model is accesible.
+This library designed to analyze and perturb text classification models, specifically focusing on generating adversarial examples that retain similar sentiment scores to the original sentence. By using techniques such as **paraphrasing** using encoder-decoder LLMs, **word swapping** using approach similar to BertAttack, and **Particle Swarm Optimization (PSO)**, it creates modified sentences that challenge the model while preserving the intended classification probabilities. This is done in a black-box setting where only the output of the model is accesible.
 
 
 ## Features
@@ -20,8 +20,14 @@ This library designed to analyze and perturb text classification models, specifi
 - **Constraints**: Applies Levenshtein distance and length constraints while ensuring that the paraphrases adhere to the target sentiment.
 - **Attack Process**: First, generate paraphrases, then perturb them using PSO and word embedding swaps to match the classification output of the original 
 sentence.
+## How to run ?
+you need to have anaconda installed, then execute the following cmds:
 
+conda env create -f environment.yml
 
+python -m tests.test_script
+
+The algorithm is using CPU by default. Feel free to specify the varialble device to use the GPU.
 # Results
 
 
@@ -68,3 +74,4 @@ src/
 │── README.md                 # Main project documentation  
 
 ```
+

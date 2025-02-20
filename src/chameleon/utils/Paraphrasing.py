@@ -14,8 +14,8 @@ def generate_best_paraphrase(input_sentence: str,
                              temperature: float = 1.5,
                              top_k: int = 50,
                              top_p: float = 0.95,
-                             cosine_similarity_threshold: float = 0.4, # should be changed
-                             threshold_attempts = 300) -> str:
+                             cosine_similarity_threshold: float = 0.8, # should be changed
+                             threshold_attempts = 1000) -> str:
     """
     Generates diverse paraphrases for a given input sentence and returns the best one
     based on cosine similarity and constraints. Keeps generating paraphrases
@@ -96,9 +96,12 @@ def generate_best_paraphrase(input_sentence: str,
             for i, similarity in enumerate(similarities):
                 if similarity > cosine_similarity_threshold:
                     best_paraphrase = valid_paraphrases[i]
+                    print("Yey we found the right paraphrased sentence, let the fun start")
+                    print(f"The paraphrased sentence is : {best_paraphrase}")
                     return best_paraphrase
 
         # If no valid paraphrase is found, continue the loop until success
+        print("Trying to find a paraphrased sentence of the original sentence with similar embedding and Levenshtein score > 30 and 40 >= length => 60 ")
 
     return "No valid paraphrase found after several attempts."
 

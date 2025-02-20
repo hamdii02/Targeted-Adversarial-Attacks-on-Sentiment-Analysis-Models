@@ -40,7 +40,7 @@ class RoundedScoreGoal_prob(GoalFunction):
                 found_valid_example = True
 
         if not found_valid_example:
-            print("No match found for any decimal precision up to n_decimal.")
+            print("No match found for any decimal precision up to {self.n_decimal} decimal.")
         rounded_scores_final = np.round(scores, decimals=self.n_decimal)
         return np.allclose(rounded_scores_final, self.target_scores)
 
